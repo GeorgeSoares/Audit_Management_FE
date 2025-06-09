@@ -88,9 +88,9 @@ export default {
 
 <style scoped>
 .form-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   background: var(--color-surface);
   padding: var(--spacing);
   border-radius: var(--radius);
