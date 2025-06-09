@@ -31,43 +31,37 @@
 </template>
 
 <script>
+import { reactive, watchEffect } from 'vue'
+
 export default {
   name: 'FindingForm',
   props: {
     initial: { type: Object, default: null }
   },
-  data() {
-    return {
-      form: {
-        assessment: '',
-        findingTitle: '',
-        findingDescription: '',
-        responsiblePerson: '',
-        status: 'Open'
+  setup(props, { emit }) {
+    const form = reactive({
+      assessment: '',
+      findingTitle: '',
+      findingDescription: '',
+      responsiblePerson: '',
+      status: 'Open'
+    })
+
+    watchEffect(() => {
+      if (props.initial && props.initial.findingNumber) {
+        form.assessment = props.initial.assessment
+        form.findingTitle = props.initial.findingTitle
+        form.findingDescription = props.initial.findingDescription
+        form.responsiblePerson = props.initial.responsiblePerson
+        form.status = props.initial.status || 'Open'
       }
+    })
+
+    const submit = () => {
+      emit('save', { ...form, id: props.initial?.findingNumber })
     }
-  },
-  computed: {
-    isEdit() {
-      return this.initial && this.initial.id
-    }
-  },
-  mounted() {
-    if (this.isEdit) {
-      const {
-        assessment,
-        findingTitle,
-        findingDescription,
-        responsiblePerson,
-        status
-      } = this.initial
-      this.form = { assessment, findingTitle, findingDescription, responsiblePerson, status }
-    }
-  },
-  methods: {
-    submit() {
-      this.$emit('save', { ...this.form, id: this.initial?.id })
-    }
+
+    return { form, submit, isEdit: props.initial?.findingNumber !== undefined }
   }
 }
 </script>
