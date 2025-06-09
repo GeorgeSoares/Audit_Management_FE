@@ -137,10 +137,10 @@ export default {
       showFindingForm.value = true
     }
 
-    const onDeleteFinding = async (id) => {
+    const onDeleteFinding = async (finding) => {
       if (!selectedAudit.value) return
       if (confirm("Confirm delete finding?")) {
-        await fetch(`http://localhost:8080/api/v1/audits/${selectedAudit.value.auditId}/findings/${id}`, {method: "DELETE"})
+        await fetch(`http://localhost:8080/api/v1/audits/${selectedAudit.value.auditId}/findings/${finding.findingNumber}`, {method: "DELETE"})
         await onView(selectedAudit.value)
       }
     }
