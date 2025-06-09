@@ -33,7 +33,7 @@
 export default {
   name: 'AuditForm',
   props: {
-    initial: Object // usado para edição
+    initial: Object
   },
   data() {
     return {
@@ -88,33 +88,31 @@ export default {
 
 <style scoped>
 .form-container {
-  background: #f9f9f9;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  max-width: 600px;
-  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing);
+  background: var(--color-surface);
+  padding: var(--spacing);
+  border-radius: var(--radius);
 }
+
 .form-container label {
-  display: block;
-  margin: 12px 0 4px;
+  grid-column: span 1;
+  margin-bottom: 0.25em;
 }
 .form-container input {
-  width: 100%;
-  padding: 6px;
+  grid-column: span 1;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
 }
+
 .actions {
-  margin-top: 20px;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing);
 }
-.button {
-  padding: 8px 12px;
-  margin-right: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-}
-.cancel {
-  background-color: #6c757d;
-}
+
+
 </style>

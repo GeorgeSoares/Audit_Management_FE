@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
-    <h1>Audit Management</h1>
+  <div id="app" class="container">
+    <header><h1>Audit Management</h1></header>
+    <main>
     <AuditList
         v-if="!selectedAudit && !showForm"
         :audits="audits"
@@ -30,8 +31,29 @@
         @save="handleSaveFinding"
         @cancel="onCancelFinding"
     />
+    </main>
   </div>
 </template>
+
+<style scoped>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+}
+main {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: var(--spacing);
+}
+header {
+  text-align: center;
+}
+</style>
 
 <script>
 import { ref, onMounted } from 'vue'
