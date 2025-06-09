@@ -38,7 +38,7 @@
           <button class="button" @click="$emit('edit-finding', f)">
             Edit
           </button>
-          <button class="button delete" @click="$emit('delete-finding', f.id)">
+          <button class="button delete" @click="$emit('delete-finding', f)">
             Delete
           </button>
         </td>
