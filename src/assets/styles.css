@@ -1,0 +1,45 @@
+:root {
+    --color-background: #f8f9fa;
+    --color-surface: #ffffff;
+    --color-primary: #2c3e50;
+    --color-accent: #2980b9;
+    --color-on-primary: #ffffff;
+    --color-on-surface: #333333;
+
+    --radius: 8px;
+    --spacing: 16px;
+    --font-sans: "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-background);
+    color: var(--color-on-surface);
+    font-family: var(--font-sans);
+}
+h1, h2, h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing);
+}
+button {
+    font: inherit;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+button.button {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    padding: 0.5em 1em;
+}
+button.button:hover {
+    background: var(--color-accent);
+}
+button.delete {
+    background: #c0392b;
+}
+button.delete:hover {
+    background: #e74c3c;
+}
