@@ -3,7 +3,13 @@
     <h3>{{ isEdit ? 'Edit Finding' : 'New Finding' }}</h3>
 
     <label for="assessment">Assessment:</label>
-    <input id="assessment" type="text" v-model="form.assessment" />
+    <select id="assessment" v-model="form.assessment">
+      <option value="Ok">Ok</option>
+      <option value="Observation">Observation</option>
+      <option value="Minor Deviation">Minor Deviation</option>
+      <option value="Major Deviation">Major Deviation</option>
+      <option value="Note">Note</option>
+    </select>
 
     <label for="title">Title:</label>
     <input id="title" type="text" v-model="form.findingTitle" />
