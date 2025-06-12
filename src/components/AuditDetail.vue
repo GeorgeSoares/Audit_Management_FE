@@ -16,35 +16,33 @@
     <div v-if="findings.length === 0">
       <em>No findings for this audit.</em>
     </div>
-    <table v-else>
-      <thead>
-      <tr>
-        <th>Assessment</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Responsible</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-      </thead>
+    <div v-else class="finding-list">
+      <table>
+        <thead>
+        <tr>
+          <th>Assessment</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Responsible</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
       <tbody>
-      <tr v-for="f in findings" :key="f.id">
-        <td>{{ f.assessment }}</td>
-        <td>{{ f.findingTitle }}</td>
-        <td>{{ f.findingDescription }}</td>
-        <td>{{ f.responsiblePerson }}</td>
-        <td>{{ f.status || '-' }}</td>
-        <td>
-          <button class="button" @click="$emit('edit-finding', f)">
-            Edit
-          </button>
-          <button class="button delete" @click="$emit('delete-finding', f)">
-            Delete
-          </button>
+      <tr v-for="f in findings" :key="f.findingNumber">
+        <td data-label="Assessment">{{ f.assessment }}</td>
+        <td data-label="Title">{{ f.findingTitle }}</td>
+        <td data-label="Description">{{ f.findingDescription }}</td>
+        <td data-label="Responsible">{{ f.responsiblePerson }}</td>
+        <td data-label="Status">{{ f.status || '-' }}</td>
+        <td data-label="Actions">
+          <button class="button" @click="$emit('edit-finding', f)">Edit</button>
+          <button class="button delete" @click="$emit('delete-finding', f)">Delete</button>
         </td>
       </tr>
       </tbody>
     </table>
+    </div>
 
     <button class="button" @click="$emit('new-finding')">
       Add Finding
@@ -69,12 +67,25 @@ export default {
 
 <style scoped>
 .detail-container {
-  background: #eef;
+  background: #e4eceb;
   padding: 20px;
   border-radius: 6px;
   margin: 20px auto;
   max-width: 800px;
 }
+
+.finding-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.finding-list th,
+.finding-list td {
+  padding: 0.75em;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
 .button {
   padding: 6px 10px;
   margin: 5px;
