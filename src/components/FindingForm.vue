@@ -20,6 +20,12 @@
     <label for="responsible">Responsible Person:</label>
     <input id="responsible" type="text" v-model="form.responsiblePerson" />
 
+    <label for="rootCause">Root Cause:</label>
+    <textarea id="rootCause" v-model="form.rootCause"></textarea>
+
+    <label for="actions">Actions:</label>
+    <textarea id="actions" v-model="form.actions"></textarea>
+
     <label for="status">Status:</label>
     <select id="status" v-model="form.status">
       <option>Open</option>
@@ -49,7 +55,9 @@ export default {
       assessment: '',
       findingTitle: '',
       findingDescription: '',
+      rootCause: '',
       responsiblePerson: '',
+      actions: '',
       status: 'Open'
     })
 
@@ -58,7 +66,9 @@ export default {
         form.assessment = props.initial.assessment
         form.findingTitle = props.initial.findingTitle
         form.findingDescription = props.initial.findingDescription
+        form.rootCause = props.initial.rootCause
         form.responsiblePerson = props.initial.responsiblePerson
+        form.actions = props.initial.actions
         form.status = props.initial.status || 'Open'
       }
     })
