@@ -14,7 +14,7 @@ To get the frontend application running locally using Docker, follow these steps
     First, clone this repository to your local machine:
 
     ```bash
-    git clone [https://github.com/georgesoares/Audit_Management_BE.git]
+    git clone https://github.com/georgesoares/Audit_Management_BE.git
     ```
 
 2.  **Navigate to the Frontend Directory:**
